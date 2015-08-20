@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8"><title> Preguntas </title>
+  <script src="/bootstrap3.3.5/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="/bootstrap3.3.5/css/bootstrap.min.css">
+  <link rel='stylesheet' href='/stylesheets/styleb.css' />
+  </head>
+<header >
+    <nav id="header" class="navbar navbar-inverse" role="banner">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html"><img src="/images/logo.png" alt="logo"></a>
+            </div>
+    
+            <div class="collapse navbar-collapse navbar-right">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="../">Home</a></li>
+                    <li><a href="/temas">Temas</a><li>
+                    <li><a href="/quizes">Preguntas</a></li>
+                    <li><a href="/estadisticas">Estadisticas</a></li>     
+                    <li><a href="/db">DB</a></li> 
+                    <li><a href="/author">Author</a></li>               
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+  
+<section id="loginb">
+  <div class="container">
+    <div class="row">
+      <%if(!session.user){%>
+        <span class="right"><a href="/login">Login</a></span>
+      <%}else{%>
+        <span class="right"> <%=session.user.username%> <a href="/logout">Logout</a></span>
+      <%}%>
+    </div>
+  </div>
+</section>
+
+<section id="content">
+    <div class="container">
+        <div class="row">
+          <section class="main" id="s1">
+           <% if (errors.length) { %>
+             <span id='ErrorMsgs'>
+               Corregir errores:<br/>
+               <% for (var i in errors) { %>
+                 <div class="alert alert-danger" role="alert"><span> <%= errors[i].message %> </span><br/></div>
+               <% } %>
+             </span>
+            <% } %>
+          <div><%- body %></div>
+          </section>
+        </div>
+    </div>
+</section>    
+
+<footer id="footer" class="midnight-blue">
+   <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    © 2015 Miguel Guadalinfo.
+                </div>
+                <div class="col-sm-6">
+                    <ul id="flinks" class="text-right">
+                        <li><a href="http://es.wikipedia.org/wiki/Quiz" target="_blank">
+                        ¿Que es un Quiz?</a>
+                        </li>
+                        <li><a href="https://github.com/JRRN/quiz-2015" target="_blank">
+                        Código Fuente</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+</footer>
+
